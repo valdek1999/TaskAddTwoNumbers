@@ -28,7 +28,7 @@ namespace TaskAddTwoNumbers
         /// <returns></returns>
         public static int GetValue(this ListNode node)
         {
-            if(node.isEmpty())
+            if(node.IsEmpty())
                 return 0;
             else
                 return node.val;
@@ -38,7 +38,7 @@ namespace TaskAddTwoNumbers
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
-        public static bool isEmpty(this ListNode node)
+        public static bool IsEmpty(this ListNode node)
         {
             if(node == null)
                 return true;
@@ -54,7 +54,7 @@ namespace TaskAddTwoNumbers
         {
             int count = 0;
 
-            while(!node.isEmpty())
+            while(!node.IsEmpty())
             {
                 count++;
                 node = node.next;
@@ -69,7 +69,7 @@ namespace TaskAddTwoNumbers
         /// <param name="node"></param>
         public static void Print(this ListNode node)
         {
-            while(!node.isEmpty())
+            while(!node.IsEmpty())
             {
                 Console.Write(node.val);
                 node = node.next;
@@ -86,7 +86,7 @@ namespace TaskAddTwoNumbers
         {
             if(firstNode.Lenght() != secondNode.Lenght())
                 return false;
-            while(!firstNode.isEmpty())
+            while(!firstNode.IsEmpty())
             {
                 if(firstNode.val != secondNode.val)
                     return false;
@@ -101,7 +101,7 @@ namespace TaskAddTwoNumbers
         /// </summary>
         public static void Add(this ListNode startNode, ListNode value)
         {
-            while(!startNode.next.isEmpty())
+            while(!startNode.next.IsEmpty())
             {
                 startNode = startNode.next;
             }
@@ -119,7 +119,7 @@ namespace TaskAddTwoNumbers
         /// <summary>
         /// Константа для переноса значения десятка в следующий разряд
         /// </summary>
-        public const int digit = 10;
+        const int Digit = 10;
         public ListNode(int val = 0, ListNode next = null)
         {
             this.val = val;
@@ -152,18 +152,18 @@ namespace TaskAddTwoNumbers
             ListNode headNode = newNode;
             int sum;
             int shiftValue = 0;
-            int surPlus;
+            int surplus;
             while(true)
             {
                 sum = l1.GetValue() + l2.GetValue() + shiftValue;
-                surPlus = sum % digit;
-                shiftValue = sum / digit;
-                newNode.val = surPlus;
-                if(!l1.isEmpty())
+                surplus = sum % Digit;
+                shiftValue = sum / Digit;
+                newNode.val = surplus;
+                if(!l1.IsEmpty())
                     l1 = l1.next;
-                if(!l2.isEmpty())
+                if(!l2.IsEmpty())
                     l2 = l2.next;
-                if(!l1.isEmpty() || !l2.isEmpty() || shiftValue != 0)
+                if(!l1.IsEmpty() || !l2.IsEmpty() || !shiftValue.Equals(0))
                 {
                     newNode.next = new ListNode();
                     newNode = newNode.next;
